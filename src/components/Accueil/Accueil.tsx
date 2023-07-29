@@ -24,6 +24,8 @@ const Accueil = () => {
             atteindre l'excellence professionnelle.
           </Typography>
           <br />
+          <br />
+          <br />
         </Grid>
         <Grid xs={12} sm={12} md={6} lg={6} className="grid-container">
           <center>
@@ -33,7 +35,9 @@ const Accueil = () => {
               width={250}
               height={300}
               className="pdp"
-            />
+            />{" "}
+            <br />
+            <br />
             <Typography variant="h6" sx={{ color: "#61dafb" }}>
               RAKOTOARINTSIFA Loïc Judicaël Harrison
             </Typography>

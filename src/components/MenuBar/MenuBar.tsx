@@ -19,7 +19,8 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import ListIcon from "@mui/icons-material/List";
 import InfoIcon from "@mui/icons-material/Info";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const drawerWidth = 240;
 // const navItems = ["Profil", "Compétence", "Expérience", "Contact"];
@@ -29,11 +30,11 @@ const navItems = [
     link: "/",
   },
   {
-    path: "Compétence",
+    path: "Compétences",
     link: "/competence",
   },
   {
-    path: "Expérience",
+    path: "Expériences",
     link: "/experience",
   },
   {
@@ -77,6 +78,7 @@ const MenuBar = (props: Props) => {
   };
 
   const history = useNavigate();
+  const takePath = useLocation();
 
   const redirect = (path: string) => (e: any) => {
     e.preventDefault();
@@ -115,6 +117,8 @@ const MenuBar = (props: Props) => {
   const theme = useTheme();
   const downMD = useMediaQuery(theme.breakpoints.down("sm"));
 
+  const url = takePath.pathname.toString();
+
   return (
     <div>
       <Box className="flex-align-between">
@@ -122,13 +126,17 @@ const MenuBar = (props: Props) => {
         <List sx={{ display: "flex" }}>
           {!downMD &&
             navItems.map((item) => (
-              <Link to={item.link} preventScrollReset={true} className="link">
+              <NavLink
+                to={item.link}
+                preventScrollReset={true}
+                className={url === item.link ? "link-active" : "cool-link"}
+              >
                 <ListItem key={item.path} disablePadding>
                   <ListItemButton sx={{ textAlign: "center" }}>
                     <ListItemText primary={item.path} />
                   </ListItemButton>
                 </ListItem>
-              </Link>
+              </NavLink>
             ))}
           {downMD && (
             <>

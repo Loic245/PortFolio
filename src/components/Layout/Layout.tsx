@@ -29,7 +29,7 @@ const Layout = (props: any) => {
         <Grid
           padding={
             !matchSM && !downMD
-              ? "0 15rem"
+              ? "0 8rem"
               : matchSM && !downMD
               ? "0 5rem"
               : "0 1rem"

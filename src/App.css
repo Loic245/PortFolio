@@ -41,6 +41,14 @@
   font-weight: bold;
 }
 
+
+.link-active {
+  text-decoration: none;
+  color: #61dafb;
+  font-weight: bold;
+  border-bottom: #61dafb solid 2px;
+}
+
 .link-mobile {
   text-decoration: none;
   color: #282c34;
@@ -202,7 +210,8 @@ p {
   display: flex;
   flex-direction: column !important;
   align-items: center;
-  /* padding: 0 0.5rem; */
+
+  padding: 0 0.5rem;
 }
 
 .typography {
@@ -269,7 +278,7 @@ p {
 @media screen and (max-width : 320px) {
   .bg-color {
     background-color: #282c34;
-    height: 260vh;
+    height: 300vh;
     width: 100%;
   }
   .flex-align-between {
@@ -308,3 +317,28 @@ p {
     transform: rotate(360deg);
   }
 }
+
+li {
+  margin-bottom: 10px;
+}
+
+.cool-link {
+  text-decoration: none;
+  color: antiquewhite;
+  font-weight: bold;
+}
+
+.cool-link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #61dafb;
+  transition: width .3s;
+}
+
+.cool-link:hover::after {
+  width: 100%;
+  /* transition: width .3s; */
+}
+

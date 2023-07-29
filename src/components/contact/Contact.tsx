@@ -6,10 +6,12 @@ import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
   const theme = useTheme();
   const downXS = useMediaQuery(theme.breakpoints.down("sm"));
+  const history = useNavigate();
 
   const data = [
     {
@@ -53,26 +55,68 @@ const Contact = () => {
       </center>
       <br />
       <Grid container>
-        {data.map((k: any) => (
-          <Grid xs={12} sm={12} md={4} lg={4} className="card-contact">
-            <div className="card-content">
-              {k.icon}
-              <Typography
-                variant="subtitle1"
-                sx={{ color: "#fff", fontWeight: 500 }}
+        {data
+          .filter((k: any) => k.name !== "Facebook" && k.name !== "LinkedIn")
+          .map((k: any) => (
+            <Grid xs={12} sm={12} md={4} lg={4} className="card-contact">
+              <div className="card-content">
+                {k.icon}
+                <Typography
+                  variant="subtitle1"
+                  sx={{ color: "#fff", fontWeight: 500 }}
+                >
+                  {k.name}
+                </Typography>
+                <br />
+                <Typography
+                  variant="subtitle2"
+                  sx={{ color: "#fff", textAlign: "center" }}
+                >
+                  {k.link}
+                </Typography>
+              </div>
+            </Grid>
+          ))}
+        {data
+          .filter(
+            (k: any) =>
+              k.name !== "Localisation" &&
+              k.name !== "WhatsApp" &&
+              k.name !== "Adresse e-mail" &&
+              k.name !== "Numéro de Portable"
+          )
+          .map((k: any) => (
+            <Grid xs={12} sm={12} md={4} lg={4} className="card-contact">
+              <a
+                href={
+                  k.name === "Facebook"
+                    ? "https://web.facebook.com/profile.php?id=100004113196675"
+                    : k.name === "LinkedIn"
+                    ? "https://mg.linkedin.com/in/loic-judica%C3%ABl-rakotoarintsifa-3a229420a"
+                    : ""
+                }
+                target="_blank"
+                style={{ textDecoration: "none" }}
               >
-                {k.name}
-              </Typography>
-              <br />
-              <Typography
-                variant="subtitle2"
-                sx={{ color: "#fff", textAlign: "center" }}
-              >
-                {k.link}
-              </Typography>
-            </div>
-          </Grid>
-        ))}
+                <div className="card-content">
+                  {k.icon}
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ color: "#fff", fontWeight: 500 }}
+                  >
+                    {k.name}
+                  </Typography>
+                  <br />
+                  <Typography
+                    variant="subtitle2"
+                    sx={{ color: "#fff", textAlign: "center" }}
+                  >
+                    {k.link}
+                  </Typography>
+                </div>
+              </a>
+            </Grid>
+          ))}
       </Grid>
     </Box>
   );

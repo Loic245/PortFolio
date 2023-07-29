@@ -120,7 +120,7 @@ const Competence = () => {
           <br />
 
           <Typography variant="h5" sx={{ color: "#fff" }}>
-            BASE DE DONNEE
+            BASE DE DONN&#201;E
           </Typography>
 
           <div className="list">
